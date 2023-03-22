@@ -7,10 +7,11 @@
 	<!-- Stylesheet -->
 	<link rel="stylesheet" href="style.css">
 	<!-- JavaScript -->
-// firebase api setupp
+	<script type="module">
+	// setup firebase
 // Import the functions you need from the SDKs you need
-<script>
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+import { getDatabase, push, ref, get, onValue } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -20,11 +21,77 @@ const firebaseConfig = {
   projectId: "website-1-9cb6f",
   storageBucket: "website-1-9cb6f.appspot.com",
   messagingSenderId: "55103481924",
-  appId: "1:55103481924:web:64fcfea9f2dd9ac586b411"
+  appId: "1:55103481924:web:64fcfea9f2dd9ac586b411",
+  databaseURL: "https://website-1-9cb6f-default-rtdb.firebaseio.com/",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// firebase api chat box
+const messageInput = document.getElementById("message-input");
+const submitBtn = document.getElementById("submit-btn");
+const messagesContainer = document.getElementById("messages");
+
+const messageRef = ref(database, "messages");
+
+submitBtn.addEventListener("click", () => {
+  console.log("trying to send message")
+  const message = messageInput.value;
+  if (message) {
+    // Save the message to Firebase Realtime Database
+    console.log("trying to send message")
+        push(messageRef, {
+      "message": message,
+      "timestamp": Date.now(),
+      "sender": "user",
+    })
+      .then(() => {
+        messageInput.value = "";
+      })
+      .catch((error) => {
+        console.error("Error saving message", error);
+      });
+  }
+});
+
+// Fetch chat messages when the page loads and when new messages are added
+onValue(messageRef, (snapshot) => {
+  if (snapshot.exists()) {
+    console.log(snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}, (error) => {
+  console.error(error);
+});
+
+
+
+onValue(messageRef, (snapshot) => {
+  const message = snapshot.val().message;
+  const timestamp = snapshot.val().timestamp;
+  const messageEl = document.createElement("div");
+  messageEl.textContent = message;
+  messagesContainer.appendChild(messageEl);
+});
+
+get(messageRef,"value")
+  .then((snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      const message = childSnapshot.val().message;
+      const messageEl = document.createElement("div");
+      messageEl.textContent = message;
+      messagesContainer.appendChild(messageEl);
+    });
+  })
+  .catch((error) => {
+    console.error("Error fetching messages", error);
+  });
+
+
+
 </script>
 	<script src="script.js"></script>
 </head>
@@ -66,3 +133,4 @@ const app = initializeApp(firebaseConfig);
 	</footer>
 </body>
 </html>
+

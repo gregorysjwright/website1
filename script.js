@@ -26,6 +26,15 @@ function authenticateUser() {
 }
 
 authenticateUser();
+console.log("hello");
+
+
+
+
+
+
+
+
 // Get the progress bar and its spans
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -72,55 +81,6 @@ linkIdsToDisable.forEach(id => {
   }
 });
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-</script>
-// firebase api chat box
-const messageInput = document.getElementById("message-input");
-const submitBtn = document.getElementById("submit-btn");
-const messagesContainer = document.getElementById("messages");
-
-const database = firebase.database();
-const messagesRef = database.ref("messages");
-
-submitBtn.addEventListener("click", () => {
-  const message = messageInput.value;
-  if (message) {
-    // Save the message to Firebase Realtime Database
-    messagesRef.push({
-      message,
-      timestamp: Date.now()
-    })
-      .then(() => {
-        messageInput.value = "";
-      })
-      .catch((error) => {
-        console.error("Error saving message", error);
-      });
-  }
-});
-
-// Fetch chat messages when the page loads and when new messages are added
-messagesRef.on("child_added", (snapshot) => {
-  const message = snapshot.val().message;
-  const timestamp = snapshot.val().timestamp;
-  const messageEl = document.createElement("div");
-  messageEl.textContent = message;
-  messagesContainer.appendChild(messageEl);
-});
-
-messagesRef.once("value")
-  .then((snapshot) => {
-    snapshot.forEach((childSnapshot) => {
-      const message = childSnapshot.val().message;
-      const messageEl = document.createElement("div");
-      messageEl.textContent = message;
-      messagesContainer.appendChild(messageEl);
-    });
-  })
-  .catch((error) => {
-    console.error("Error fetching messages", error);
-  });
 
 // Other JavaScript code for your website can go here
 // .
