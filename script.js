@@ -72,24 +72,9 @@ linkIdsToDisable.forEach(id => {
   }
 });
 
-// firebase api setupp
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCnpyh3MsPNIJRniNtiN0BuNhyVe5ImHVg",
-  authDomain: "website-1-9cb6f.firebaseapp.com",
-  projectId: "website-1-9cb6f",
-  storageBucket: "website-1-9cb6f.appspot.com",
-  messagingSenderId: "55103481924",
-  appId: "1:55103481924:web:64fcfea9f2dd9ac586b411"
-};
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+</script>
 // firebase api chat box
 const messageInput = document.getElementById("message-input");
 const submitBtn = document.getElementById("submit-btn");
