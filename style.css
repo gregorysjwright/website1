@@ -1,0 +1,112 @@
+#progress-bar {
+  font-size: 24px;
+  color: #333;
+}
+#progress-bar span {
+  cursor: pointer;
+}
+#progress-bar .prize {
+  color: gold;
+}
+#progress-bar .win {
+  color: green;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set the width of the iframe to 100% of the screen width */
+iframe {
+  width: 100vw;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  background-color: #fff3e0;
+  border: 1px solid #ffb74d;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.btn {
+  background-color: #b39ddb;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #8e24aa;
+}
+
+/* Body */
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: #4a4a4a;
+  background-color: #f5f5f5;
+}
+
+/* Headings */
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  color: #bf1650;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #bf1650;
+}
+
+/* Paragraphs */
+p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: justify;
+  color: #4a4a4a;
+}
+
+/* Links */
+a {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  color: #bf1650;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #6b0f3c;
+}
+
+
+body {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.my-iframe {
+  display: block;
+  width: 100%;
+  height: 800px;
+  max-width: 800px;
+  margin: 0 auto;
+}

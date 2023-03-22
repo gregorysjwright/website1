@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Game 1 - Flappy Bird</title>
+    <link rel="stylesheet" href="style.css">    
+<style>
+      .back-btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="website1.html" class="back-btn"><i class="fas fa-arrow-left"></i> Go Back to Homepage</a>
+    <h1>Flappy Bird Game</h1>
+    <p>To pass this stage, beat round <span id="rounds">20</span> in Flappy Bird.</p>
+    <iframe class="my-iframe" src="https://funhtml5games.com?embed=flappy" frameborder="0" scrolling="no"></iframe>
+  
+	 <button onclick="updateProgress()">Click me!</button>
+    <script>
+       function updateProgress() {
+        let id = "1";
+        let progress = JSON.parse(localStorage.getItem("progress")); // Get the current value of the "progress" variable from local storage and parse it as a JSON object
+        if (progress === null) {
+          progress = []; // If "progress" is not set, initialize it to an empty array
+        }
+        progress.push(id); // Add the unique ID to the "progress" array
+        localStorage.setItem("progress", JSON.stringify(progress)); // Store the updated "progress" variable in local storage after converting it to a JSON string
+        console.log("Progress updated:", progress); // Log the updated "progress" variable to the console
+      }
+    </script>
+
+  </body>
+</html>
