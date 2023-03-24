@@ -28,6 +28,10 @@
     "classes": ["locked", "game"]
   },
   {
+    "href": "game8.html",
+    "classes": ["locked", "game"]
+  },
+  {
     "href": "win.html",
     "classes": ["win", "locked"]
   }
