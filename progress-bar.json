@@ -39,11 +39,7 @@
     "href": "prize2.html",
     "classes": ["locked", "prize"]
   },
-  {
-    "href": "win.html",
-    "classes": ["win", "locked"]
-  },
-    {
+  { 
     "href": "flappyBird.html",
     "classes": ["unlocked", "game"]
   },
@@ -87,7 +83,43 @@
     "href": "win.html",
     "classes": ["win", "locked"]
   },
-    {
+  {
+    "href": "game2.html",
+    "classes": ["locked", "game"]
+  },
+  {
+    "href": "game3.html",
+    "classes": ["locked", "game"]
+  },
+  {
+    "href": "game4.html",
+    "classes": ["locked", "game"]
+  },
+  {
+    "href": "prize1.html",
+    "classes": ["locked", "prize"]
+  },
+  {
+    "href": "game5.html",
+    "classes": ["locked", "game"]
+  },
+  {
+    "href": "game6.html",
+    "classes": ["locked", "game"]
+  },
+  {
+    "href": "game7.html",
+    "classes": ["locked", "game"]
+  },
+  {
+    "href": "game8.html",
+    "classes": ["locked", "game"]
+  },
+  {
+    "href": "prize2.html",
+    "classes": ["locked", "prize"]
+  },
+  {
     "href": "flappyBird.html",
     "classes": ["unlocked", "game"]
   },
@@ -128,10 +160,6 @@
     "classes": ["locked", "prize"]
   },
   {
-    "href": "win.html",
-    "classes": ["win", "locked"]
-  },
-    {
     "href": "flappyBird.html",
     "classes": ["unlocked", "game"]
   },
@@ -172,10 +200,6 @@
     "classes": ["locked", "prize"]
   },
   {
-    "href": "win.html",
-    "classes": ["win", "locked"]
-  },
-    {
     "href": "flappyBird.html",
     "classes": ["unlocked", "game"]
   },
@@ -216,54 +240,6 @@
     "classes": ["locked", "prize"]
   },
   {
-    "href": "win.html",
-    "classes": ["win", "locked"]
-  },
-    {
-    "href": "flappyBird.html",
-    "classes": ["unlocked", "game"]
-  },
-  {
-    "href": "game2.html",
-    "classes": ["locked", "game"]
-  },
-  {
-    "href": "game3.html",
-    "classes": ["locked", "game"]
-  },
-  {
-    "href": "game4.html",
-    "classes": ["locked", "game"]
-  },
-  {
-    "href": "prize1.html",
-    "classes": ["locked", "prize"]
-  },
-  {
-    "href": "game5.html",
-    "classes": ["locked", "game"]
-  },
-  {
-    "href": "game6.html",
-    "classes": ["locked", "game"]
-  },
-  {
-    "href": "game7.html",
-    "classes": ["locked", "game"]
-  },
-  {
-    "href": "game8.html",
-    "classes": ["locked", "game"]
-  },
-  {
-    "href": "prize2.html",
-    "classes": ["locked", "prize"]
-  },
-  {
-    "href": "win.html",
-    "classes": ["win", "locked"]
-  },
-    {
     "href": "flappyBird.html",
     "classes": ["unlocked", "game"]
   },
