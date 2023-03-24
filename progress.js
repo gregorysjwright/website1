@@ -10,11 +10,9 @@ fetch('progress-bar.json')
       link.classList.add(...item.classes);
       link.id = `link${index + 1}`;
 
-      if (item.prize) {
-        link.innerHTML = '<span class="icon"></span><span class="stage"></span>';
+      link.innerHTML = '<span class="icon"></span><span class="stage"></span>';
+      if (item.classes.includes("prize") {
         linksHtml += '<br>'; // Start new line for prize links
-      } else {
-        link.innerHTML = '<span class="icon"></span><span class="stage"></span>';
       }
 
       linksHtml += link.outerHTML;
