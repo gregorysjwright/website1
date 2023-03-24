@@ -16,6 +16,10 @@
     "classes": ["locked", "game"]
   },
   {
+    "href": "prize1.html",
+    "classes": ["locked", "prize"]
+  },
+  {
     "href": "game5.html",
     "classes": ["locked", "game"]
   },
