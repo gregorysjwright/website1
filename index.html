@@ -68,22 +68,52 @@ onValue(messageRef, (snapshot) => {
 });
 
 
+function addMessage(message, user, timestamp) {
+  // Convert the timestamp to a date and time format
+  const date = new Date(timestamp);
+  const hours = date.getHours();
+  const minutes = "0" + date.getMinutes();
+  const formattedTime = hours + ":" + minutes.substr(-2);
+  const formattedDate = date.toDateString();
+
+  // Create a new chat message element
+  const chatMessage = document.createElement("div");
+  chatMessage.classList.add("chat-message");
+
+  // Create a message header element
+  const messageHeader = document.createElement("div");
+  messageHeader.classList.add("message-header");
+  messageHeader.textContent = user + " • " + formattedTime + " on " + formattedDate;
+  chatMessage.appendChild(messageHeader);
+
+  // Create a message body element
+  const messageBody = document.createElement("div");
+  messageBody.classList.add("message-body");
+  messageBody.textContent = message;
+  chatMessage.appendChild(messageBody);
+
+  // Determine the message alignment based on the user
+  if (user === "me") {
+    chatMessage.classList.add("my-message");
+  } else {
+    chatMessage.classList.add("other-message");
+  }
+
+  // Append the chat message element to the chatbox
+  chatbox.appendChild(chatMessage);
+}
 
 onValue(messageRef, (snapshot) => {
   const message = snapshot.val().message;
   const timestamp = snapshot.val().timestamp;
-  const messageEl = document.createElement("div");
-  messageEl.textContent = message;
-  messagesContainer.appendChild(messageEl);
+  addMessage(message,"me",timestamp);
 });
 
 get(messageRef,"value")
   .then((snapshot) => {
     snapshot.forEach((childSnapshot) => {
       const message = childSnapshot.val().message;
-      const messageEl = document.createElement("div");
-      messageEl.textContent = message;
-      messagesContainer.appendChild(messageEl);
+      addMessage(message, "me", childSnapshot.val().timestamp);
     });
   })
   .catch((error) => {
