@@ -192,6 +192,11 @@ body {
 .chat-log {
   padding: 10px;
   background-color: #FDE7E8;
+  max-height: 300px; /* set a fixed maximum height */
+  overflow-y: scroll; /* enable vertical scrolling */
+  scroll-behavior: smooth; 
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
 .chat-message {

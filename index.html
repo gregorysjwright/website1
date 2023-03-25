@@ -36,25 +36,29 @@ const messagesContainer = document.getElementById("messages");
 
 const messageRef = ref(database, "messages");
 
-submitBtn.addEventListener("click", () => {
-  console.log("trying to send message")
-  const message = messageInput.value;
+function saveMessageToFirebase(messageRef, message) {
   if (message) {
     // Save the message to Firebase Realtime Database
     console.log("trying to send message")
-        push(messageRef, {
+    push(messageRef, {
       "message": message,
       "timestamp": Date.now(),
       "sender": "user",
     })
-      .then(() => {
-        messageInput.value = "";
-      })
-      .catch((error) => {
-        console.error("Error saving message", error);
-      });
+    .then(() => {
+      messageInput.value = "";
+    })
+    .catch((error) => {
+      console.error("Error saving message", error);
+    });
   }
-});
+}
+
+
+submitBtn.addEventListener("click", () => {
+  saveMessageToFirebase(messageRef, messageInput.value.trim());
+  scrollChatToBottom();
+  });
 
 // Fetch chat messages when the page loads and when new messages are added
 onValue(messageRef, (snapshot) => {
@@ -66,6 +70,11 @@ onValue(messageRef, (snapshot) => {
 }, (error) => {
   console.error(error);
 });
+
+function scrollChatToBottom() {
+  var chatbox = document.getElementById("chatbox");
+  chatbox.scrollTop = chatbox.scrollHeight - chatbox.clientHeight;
+}
 
 
 function addMessage(message, user, timestamp) {
@@ -101,6 +110,9 @@ function addMessage(message, user, timestamp) {
 
   // Append the chat message element to the chatbox
   chatbox.appendChild(chatMessage);
+  
+  // scroll to bottom of chatlog
+  scrollChatToBottom();
 }
 
 onValue(messageRef, (snapshot) => {
@@ -120,12 +132,29 @@ get(messageRef,"value")
     console.error("Error fetching messages", error);
   });
 
+messageInput.addEventListener("keydown", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault(); // prevent the default behavior of adding a newline
+    const message = messageInput.value.trim();
+    saveMessageToFirebase(messageRef, message);
+    if (message !== "") {
+      addMessage(message, "me", Date.now());
+      messageInput.value = "";
+      scrollChatToBottom();
+   }
+  }
+});
 
+window.addEventListener('load', function() {
+   scrollChatToBottom();
+});
 
 </script>
 	<script src="script.js"></script>
 </head>
 <body>
+<br>
+<br>
 <div class=border style="background-color:#FDE7E8;">
 	<header>
 		<h2 class=signature>Dear Lottie,</h2>
