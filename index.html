@@ -56,8 +56,10 @@ function saveMessageToFirebase(messageRef, message) {
 
 
 submitBtn.addEventListener("click", () => {
-  saveMessageToFirebase(messageRef, messageInput.value.trim());
-  scrollChatToBottom();
+  const message = messageInput.value.trim();
+  saveMessageToFirebase(messageRef, message);
+  addMessage(message, "me", Date.now());
+  messageInput.value = "";
   });
 
 // Fetch chat messages when the page loads and when new messages are added
@@ -78,6 +80,9 @@ function scrollChatToBottom() {
 
 
 function addMessage(message, user, timestamp) {
+  if (!message) {
+    return;
+  }
   // Convert the timestamp to a date and time format
   const date = new Date(timestamp);
   const hours = date.getHours();
@@ -137,17 +142,11 @@ messageInput.addEventListener("keydown", function(event) {
     event.preventDefault(); // prevent the default behavior of adding a newline
     const message = messageInput.value.trim();
     saveMessageToFirebase(messageRef, message);
-    if (message !== "") {
-      addMessage(message, "me", Date.now());
-      messageInput.value = "";
-      scrollChatToBottom();
+    addMessage(message, "me", Date.now());
+    messageInput.value = "";
    }
-  }
 });
 
-window.addEventListener('load', function() {
-   scrollChatToBottom();
-});
 
 </script>
 	<script src="script.js"></script>
