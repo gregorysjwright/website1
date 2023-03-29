@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wheel of Fortune</title>
+  <link rel="stylesheet" type="text/css" href="wheel.css">
+</head>
+<body>
+  <canvas class="confetti" id="canvasConfetti"></canvas>
+  <div id="sector-container"></div>
+  <script type="text/javascript" src="wheel.js"></script> 
+  <script> 
+	 const sectorContainer = document.getElementById('sector-container');
+      const sector = createSector(100, 0, Math.PI / 4, 'blue', "Prize 1");
+      sectorContainer.appendChild(sector);
+  </script>
+
+  <!-- <script type="text/javascript" src="confetti.js"></script> -->
+</body>
+</html>
+

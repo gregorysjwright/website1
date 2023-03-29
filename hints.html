@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hint Boxes</title>
+	<style>
+		.box {
+			display: inline-block;
+			width: 150px;
+			height: 150px;
+			background-color: lightgray;
+			margin: 10px;
+			text-align: center;
+			line-height: 150px;
+			cursor: pointer;
+			font-weight: bold;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box1">Hint 1</div>
+	<div class="box" id="box2">Hint 2</div>
+	<div class="box" id="box3">Hint 3</div>
+
+	<script>
+		var hints = {
+			"box1": ["Hint 1a", "Hint 1b", "Hint 1c"],
+			"box2": ["Hint 2a", "Hint 2b", "Hint 2c"],
+			"box3": ["Hint 3a", "Hint 3b", "Hint 3c"]
+		};
+
+		var boxes = document.querySelectorAll('.box');
+
+		boxes.forEach(function(box) {
+			box.addEventListener('click', function() {
+				var hintsList = hints[box.id];
+				if (hintsList.length > 0) {
+					var hintIndex = Math.floor(Math.random() * hintsList.length);
+					var hint = hintsList[hintIndex];
+					hintsList.splice(hintIndex, 1);
+					alert(hint);
+					if (hintsList.length === 0) {
+						box.innerText = "No more hints of this category, try another";
+						box.removeEventListener('click', arguments.callee);
+					}
+				} else {
+					box.innerText = "No more hints of this category, try another";
+					box.removeEventListener('click', arguments.callee);
+				}
+			});
+		});
+	</script>
+	<script src="hints.js" type=module>
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const database = getDatabase(app);
+	
+	pushToFirebase(database, hints, {
+      "hint": "hint test 1",
+    });
+
+	</script>
+</body>
+</html>
+
