@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
 
-
+export { app, database, auth };
 
 
 function pushToFirebase(database, path, data_json) {
@@ -99,4 +99,4 @@ function getDataFromFirebase(database, path) {
 }
 
 
-
+export { pushToFirebase, signUpWithEmail,  signIntoFirebase , onAuthStateChanged, getDataFromFirebase } 
