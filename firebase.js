@@ -81,3 +81,22 @@ onAuthStateChanged(auth, (user) => {
       console.log("user is signed out");
     }
 });
+
+// get data from database
+
+function getDataFromFirebase(database, path) {
+  return new Promise((resolve, reject) => {
+    const databaseRef = ref(database, path);
+    get(databaseRef)
+      .then((snapshot) => {
+        const data = snapshot.val();
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
+
+
+
