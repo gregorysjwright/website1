@@ -28,7 +28,7 @@ function saveMessageToFirebase(message) {
       "timestamp": Date.now(),
       "sender": "user",
     }
-    pushToFirebase(database, 'messages', json
+    pushToFirebase(database, 'messages', json)
     .then(() => {
       messageInput.value = "";
     })
