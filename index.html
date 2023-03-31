@@ -12,24 +12,23 @@
 	// setup firebase
 // Import the functions you need from the SDKs you need
 
-import { database, app } from "./firebase.js"
-
+import { database, app, ref, get, OnValue } from "./firebase.js"
+import { pushToFirebase } from "./firebase.js"
 // firebase api chat box
 const messageInput = document.getElementById("message-input");
 const submitBtn = document.getElementById("submit-btn");
 const messagesContainer = document.getElementById("messages");
 
-const messageRef = ref(database, "messages");
 
-function saveMessageToFirebase(messageRef, message) {
+function saveMessageToFirebase(message) {
   if (message) {
-    // Save the message to Firebase Realtime Database
-    console.log("trying to send message")
-    push(messageRef, {
+
+    json = {
       "message": message,
       "timestamp": Date.now(),
       "sender": "user",
-    })
+    }
+    pushToFirebase(database, 'messages', json
     .then(() => {
       messageInput.value = "";
     })
