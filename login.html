@@ -4,28 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-  </head>
-  <body>
-    <h1>Login</h1>
-    <form>
-      <div>
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-      <button type="submit" onclick="login(event)">Submit</button>
-    </form>
     <script type="module">
       import { app, auth } from "./firebase.js";
-      
+
       import { signIntoFirebase } from "./firebase.js";
 
-      async function login(event) {
+      export async function login(event) {
         event.preventDefault();
-        
+
         const dob = document.getElementById("dob").value;
         const email = hashDOB(dob) + "@example.com";
         const password = document.getElementById("password").value;
@@ -45,6 +31,20 @@
       }
 
     </script>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form>
+      <div>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" onclick="login(event)">Submit</button>
+    </form>
   </body>
 </html>
 
