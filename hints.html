@@ -18,9 +18,9 @@
 	</style>
 </head>
 <body>
-	<div class="box" id="box1">Hint 1</div>
-	<div class="box" id="box2">Hint 2</div>
-	<div class="box" id="box3">Hint 3</div>
+	<div class="box" id="typeA">Hint 1</div>
+	<div class="box" id="typeB">Hint 2</div>
+	<div class="box" id="typeC">Hint 3</div>
 
 	<script type=module src=./firebase.js></script>
 	<script type=module>
@@ -31,7 +31,7 @@
 
 		function getHintValues(database, type) {
 			const path = `hints/${type}`;
-  			const data = getDataFromFirebase(database, path);
+  			const data = await getDataFromFirebase(database, path);
   			const values = [];
 
   			for (const key in data) {
@@ -45,19 +45,11 @@
 		}
 
 		
-		console.log(getHintValues(database, 'typeA'));
-
-
-
-
-		var hints = {
-			"box1": ["Hint 1a", "Hint 1b", "Hint 1c"],
-			"box2": ["Hint 2a", "Hint 2b", "Hint 2c"],
-			"box3": ["Hint 3a", "Hint 3b", "Hint 3c"]
-		};
+		const hints = {}; 
+		hints['typeA'] = getHintValues(database, 'typeA');
+		hints['typeB'] = getHintValues(database, 'typeB');
+		hints['typeC'] = getHintValues(database, 'typeC');
 		
-		
-		hints = getDataFromFirebase(database, 'hints');
 		console.log("Outputting hints")
 		console.log(hints)
 		var boxes = document.querySelectorAll('.box');
