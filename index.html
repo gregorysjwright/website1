@@ -23,7 +23,7 @@ const messagesContainer = document.getElementById("messages");
 function saveMessageToFirebase(message) {
   if (message) {
 
-    json = {
+    const json = {
       "message": message,
       "timestamp": Date.now(),
       "sender": "user",
