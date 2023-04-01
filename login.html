@@ -7,7 +7,7 @@
     <script type="module">
       import { app, auth } from "./firebase.js";
 
-      import { signIntoFirebase, signUpWithEmail } from "./firebase.js";
+      import { signIntoFirebase, signUpWithEmail signOut } from "./firebase.js";
 
       export async function login(event) {
         event.preventDefault();
@@ -18,7 +18,7 @@
 
         try {
           signIntoFirebase(email, password);
-          //window.location.href = "index.html";
+          window.location.href = "index.html";
         } catch (error) {
           alert(error.message);
         }
@@ -39,7 +39,6 @@ button.addEventListener('click', (event) => {
   console.log("trying signup");
   signUpWithEmail(email, password);
 });
-
 
 
 
@@ -71,7 +70,8 @@ button.addEventListener('click', (event) => {
       <input type="password" id="password2" name="password" required>
     </div>
     <button type="submit" id="submit2">Sign Up</button>
-  </form>
+  i</form>
+  <button id="sign-out" onclick="signOut(auth)">Sign Out</button>
 </div>
 
 
