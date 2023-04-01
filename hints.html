@@ -66,7 +66,7 @@
 		var boxes = document.querySelectorAll('.box');
 
 		boxes.forEach(function(box) {
-			box.addEventListener('click', function() {
+			box.addEventListener('click', function handleClick() {
 				var hintsList = hints[box.id];
 				if (hintsList.length > 0) {
 					var hintIndex = Math.floor(Math.random() * hintsList.length);
@@ -75,11 +75,11 @@
 					alert(hint);
 					if (hintsList.length === 0) {
 						box.innerText = "No more hints of this category, try another";
-						box.removeEventListener('click', arguments.callee);
+						box.removeEventListener('click', handleClick);
 					}
 				} else {
 					box.innerText = "No more hints of this category, try another";
-					box.removeEventListener('click', arguments.callee);
+					box.removeEventListener('click', handleClick);
 				}
 			});
 		});
