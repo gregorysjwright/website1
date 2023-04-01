@@ -17,7 +17,7 @@
         const password = document.getElementById("password").value;
 
         try {
-          signIntoFirebase("example2@email.com", "password123");
+          signIntoFirebase(email, password);
           //window.location.href = "index.html";
         } catch (error) {
           alert(error.message);
@@ -29,6 +29,18 @@
         // For example purposes, just return the DOB as a string
         return dob.replaceAll("-", "");
       }
+
+	const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const dob = document.querySelector('#dob').value;
+  const password = document.querySelector('#password').value;
+  const email = `${hashDOB(dob)}@example.com`;
+  signUpWithEmail(email, password);
+});
+
+
+
 
     </script>
   </head>
@@ -45,6 +57,23 @@
       </div>
       <button type="submit" onclick="login(event)">Submit</button>
     </form>
+
+    <div>
+  <h2>Sign Up</h2>
+  <form>
+    <div>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+
+
   </body>
 </html>
 
