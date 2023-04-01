@@ -37,37 +37,7 @@ console.log("hello");
 
 // Get the progress bar and its spans
 
-document.addEventListener("DOMContentLoaded", function() {
-  const progressBar = document.getElementById("progress-bar");
-  const spans = progressBar.getElementsByTagName("span");
-
-  // Do something with the spans...
-
-// Load the progress from storage or set it to an empty array if none exists
-let progress = JSON.parse(localStorage.getItem("progress")) || [];
-
-// Loop through the spans and add event listeners
-for (let i = 0; i < spans.length; i++) {
-  //spans[i].addEventListener("click", function() {
-    // Update the style of the clicked span
-
-    // Add the completed game to the progress array
-  //  progress.push(i + 1);
-
-    // Save the progress to storage
-  //  localStorage.setItem("progress", JSON.stringify(progress));
-  //});
-
-  // Check if the game has been completed and update the style if necessary
-  console.log(progress.includes(i + 1))
-  console.log(progress.includes(i))
-  if (progress.includes(i + 1) && !spans[i].classList.contains("prize")) {
-    console.log("is true")
-    spans[i].innerHTML = "&#x2705";
-    //spans[i+1].innerHTML = "&#x1F513"
-  }
-}
-});
+// needs redoing
 
 // Disable links not ready yet
 
