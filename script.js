@@ -25,8 +25,6 @@ function authenticateUser() {
   }
 }
 
-authenticateUser();
-console.log("hello");
 
 
 
