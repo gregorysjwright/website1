@@ -66,7 +66,6 @@ function signIntoFirebase(email, password) {
   });
 }
 
-signIntoFirebase("example2@email.com", "password123");
 
 onAuthStateChanged(auth, (user) => {
 	if (user) {
