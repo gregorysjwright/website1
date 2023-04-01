@@ -30,8 +30,8 @@
         return dob.replaceAll("-", "");
       }
 
-	const form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
+	const button= document.querySelector('#submit2');
+form.addEventListener('click', (event) => {
   event.preventDefault();
   const dob = document.querySelector('#dob2').value;
   const password = document.querySelector('#password2').value;
@@ -70,7 +70,7 @@ form.addEventListener('submit', (event) => {
       <label for="password">Password:</label>
       <input type="password" id="password2" name="password" required>
     </div>
-    <button type="submit">Sign Up</button>
+    <button type="submit" id="submit2">Sign Up</button>
   </form>
 </div>
 
