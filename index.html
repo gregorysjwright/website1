@@ -20,7 +20,7 @@ const submitBtn = document.getElementById("submit-btn");
 const messagesContainer = document.getElementById("messages");
 
 
-function saveMessageToFirebase(message) {
+async function saveMessageToFirebase(message) {
   if (message) {
 
     const json_data = {
@@ -31,7 +31,7 @@ function saveMessageToFirebase(message) {
     
     console.log(json_data);
 
-    pushToFirebase(database, 'messages', json_data)
+    await pushToFirebase(database, 'messages', json_data)
     .then(() => {
       messageInput.value = "";
     })
@@ -44,12 +44,15 @@ function saveMessageToFirebase(message) {
 const messageRef = ref(database, 'messages');
 
 submitBtn.addEventListener("click", () => {
-  const message = messageInput.value.trim();
-  console.log(message);
-  saveMessageToFirebase(message);
-  addMessage(message, "me", Date.now());
-  messageInput.value = "";
-  });
+  
+	Promise.resolve().then(async function() {
+  	    const message = messageInput.value.trim();
+  	    console.log(message);
+  	    saveMessageToFirebase(message);
+  	    addMessage(message, "me", Date.now());
+  	    messageInput.value = "";
+  	});
+});
 
 // Fetch chat messages when the page loads and when new messages are added
 onValue(messageRef, (snapshot) => {
