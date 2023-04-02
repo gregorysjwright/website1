@@ -1,0 +1,46 @@
+
+
+
+# website structure
+
+-login.html -> index.html
+        - if not authenticated, send back to login.html
+        - colour scheme to match
+        - Generate login accounts in advance aka lottie, admin, test, admirer
+                - sorts these out with firebase account to make sure read/write rules are
+                  properly distinguishing
+        - make sure login info isnt easy to see
+
+-index.html
+        - Secret admirer love note
+                - Correct formatting/styling
+                - Link to the tasks page
+        - Chatbox
+                - correct formatting
+                - make sure messages are stored/fetched correctly
+                - make sure user distinguishment is right
+
+-progress.html
+        - formatting/styling
+        - Display all challenges/prizes links with appropriate boxes
+        - Display completed challenges
+        - unlock next stage/empty stages
+
+-wheel.html
+        - prize wheel that selects a random prize for the user
+        - pregenerate order and store in firebase
+        -
+
+-hints.html
+        - get hints by index from firebase
+        - store current hint indices in firebase
+        - update indices after hint is chosen
+        - show multiple selection boxes of types of hints to choose from
+        - after selecting a box, pull hint from firebase (updating the index)
+          and then display it to the user
+        - prevent accessing another hint until completing next stage
+        - if run out of hints of that category, display "ran out of hints of this category"
+        -
+
+
+# what needs doing for the website
