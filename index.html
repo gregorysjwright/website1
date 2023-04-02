@@ -45,6 +45,7 @@ const messageRef = ref(database, 'messages');
 
 submitBtn.addEventListener("click", () => {
   const message = messageInput.value.trim();
+  console.log(message);
   saveMessageToFirebase(messageRef, message);
   addMessage(message, "me", Date.now());
   messageInput.value = "";
