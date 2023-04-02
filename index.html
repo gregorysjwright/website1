@@ -29,7 +29,7 @@ function saveMessageToFirebase(message) {
       "sender": "user",
     }
     
-    console.log(json_data;)
+    console.log(json_data);
 
     pushToFirebase(database, 'messages', json_data)
     .then(() => {
