@@ -59,6 +59,7 @@ function signIntoFirebase(email, password) {
     const user = userCredential.user;
     // ...
     console.log("successful sign in of " + user.email);
+    return auth;
   })
   .catch((error) => {
     const errorCode = error.code;

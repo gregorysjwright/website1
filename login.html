@@ -9,7 +9,7 @@
 
       import { signIntoFirebase, signUpWithEmail, signOut } from "./firebase.js";
       signOut(auth);
-      export async function login(event) {
+      function login(event) {
         event.preventDefault();
 
         const dob = document.getElementById("dob").value;
@@ -17,7 +17,7 @@
         const password = document.getElementById("password").value;
 
         try {
-          signIntoFirebase(email, password);
+          auth = signIntoFirebase(email, password);
 	  if (auth.currentUser) {
 	  window.location.href = "index.html";
           }
