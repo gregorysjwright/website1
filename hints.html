@@ -18,9 +18,6 @@
 	</style>
 </head>
 <body>
-	<div class="box" id="typeA">Hint 1</div>
-	<div class="box" id="typeB">Hint 2</div>
-	<div class="box" id="typeC">Hint 3</div>
 	<script type="module" src="auth.js"></script>
 	<script type=module src=./firebase.js></script>
 	<script type=module>
@@ -61,7 +58,7 @@
 				if (hint) {
 					hintDisplay.innerText = hint;
 				}			
-				} else {
+				else {
 					box.innerText = "N/A";
 					box.removeEventListener('click', handleClick);
 				}
