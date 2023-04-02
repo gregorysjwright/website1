@@ -80,7 +80,7 @@ function getDataFromFirebase(database, path, args="") {
     if (args){
       databaseRef = query(databaseRef, args);
     }
-    get(databaseRef, args)
+    get(databaseRef)
       .then((snapshot) => {
         const data = snapshot.val();
         resolve(data);
