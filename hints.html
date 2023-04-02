@@ -21,7 +21,7 @@
 	<script type="module" src="auth.js"></script>
 	<script type=module src=./firebase.js></script>
 	<script type=module>
-		import { ref,  database, getDataFromFirebase, list } from './firebase.js'
+		import { ref,  database, getDataFromFirebase } from './firebase.js'
 
 		async function getHint(database, type, index) {
 			getDataFromFirebase(database, 'hints/${type}/${index}')
