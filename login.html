@@ -8,7 +8,7 @@
       import { app, auth } from "./firebase.js";
 
       import { signIntoFirebase, signUpWithEmail, signOut } from "./firebase.js";
-
+      signOut(auth);
       export async function login(event) {
         event.preventDefault();
 
