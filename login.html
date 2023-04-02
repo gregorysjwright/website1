@@ -17,14 +17,16 @@
         const password = document.getElementById("password").value;
 
         try {
-          auth = signIntoFirebase(email, password);
-	  if (auth.currentUser) {
-	  window.location.href = "index.html";
-          }
-	  else {
-	    console.log("login failed");
-	    alert("login failed");
-	  }
+          signIntoFirebase(email, password).then(
+	  
+	  	if (auth.currentUser) {
+	 	  window.location.href = "index.html";
+          	}
+	  	else {
+	    	  console.log("login failed");
+	    	  alert("login failed");  
+	  	}
+	  );
 
 	} catch (error) {
           alert(error.message);
