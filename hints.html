@@ -27,7 +27,7 @@
 		import { database, getDataFromFirebase } from './firebase.js'
 
 		function getHint(database, type, index) {
-			getDataFromFirebase(database, 'hints/${type}/${index}');
+			getDataFromFirebase(database, 'hints/${type}/${index}')
 			.then((data) => {
 				console.log(data)
 				return data;
