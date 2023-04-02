@@ -20,12 +20,12 @@ const auth = getAuth();
 export { app, database, auth };
 
 
-function pushToFirebase(database, path, data_json) {
+async function pushToFirebase(database, path, data_json) {
   const db_ref = ref(database, path);
   if (data_json) {
     // Save the message to Firebase Realtime Database
     console.log("trying to push to firebase db");
-    push(db_ref,data_json)
+    await push(db_ref,data_json)
     .catch((error) => {
       console.error("Error saving message", error);
     });
