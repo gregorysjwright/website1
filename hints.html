@@ -36,8 +36,8 @@
 		}
 		
 
-		const hintTypes = getDataFromFirebase(database, 'hints', { shallow:true } )
-		.then()(data => {
+		getDataFromFirebase(database, 'hints', { shallow:true } )
+		.then()(hintTypes => {
 			console.log(hintTypes);
 		
 			const body = document.querySelector("body");
