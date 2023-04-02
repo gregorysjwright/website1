@@ -131,11 +131,14 @@ get(messageRef,"value")
 
 messageInput.addEventListener("keydown", function(event) {
   if (event.keyCode === 13) {
-    event.preventDefault(); // prevent the default behavior of adding a newline
-    const message = messageInput.value.trim();
-    saveMessageToFirebase(messageRef, message);
-    addMessage(message, "me", Date.now());
-    messageInput.value = "";
+    Promise.resolve().then(async function() {
+            event.preventDefault(); // prevent the default behavior of adding a newline
+	    const message = messageInput.value.trim();
+            console.log(message);
+            saveMessageToFirebase(message);
+            addMessage(message, "me", Date.now());
+            messageInput.value = "";
+        });
    }
 });
 
