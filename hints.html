@@ -36,7 +36,7 @@
 		}
 		
 
-		hintTypes = getDataFromFirebase(database, 'hints', { shallow:true } );
+		const hintTypes = getDataFromFirebase(database, 'hints', { shallow:true } );
 		console.log(hintTypes);
 		
 		const body = document.querySelector("body");

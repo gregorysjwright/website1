@@ -23,12 +23,15 @@ const messagesContainer = document.getElementById("messages");
 function saveMessageToFirebase(message) {
   if (message) {
 
-    const json = {
+    const json_data = {
       "message": message,
       "timestamp": Date.now(),
       "sender": "user",
     }
-    pushToFirebase(database, 'messages', json)
+    
+    console.log(json_data;)
+
+    pushToFirebase(database, 'messages', json_data)
     .then(() => {
       messageInput.value = "";
     })
