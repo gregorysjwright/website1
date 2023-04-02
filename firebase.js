@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
-import { getDatabase, push, ref, get, onValue, list, query } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+import { getDatabase, push, ref, get, onValue, query } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -92,4 +92,4 @@ function getDataFromFirebase(database, path, args="") {
 }
 
 
-export { list, pushToFirebase, signUpWithEmail, signOut,  signIntoFirebase , onAuthStateChanged, getDataFromFirebase } 
+export { pushToFirebase, signUpWithEmail, signOut,  signIntoFirebase , onAuthStateChanged, getDataFromFirebase } 
