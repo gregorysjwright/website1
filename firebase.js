@@ -73,10 +73,10 @@ function signIntoFirebase(email, password) {
 
 // get data from database
 
-function getDataFromFirebase(database, path) {
+function getDataFromFirebase(database, path, args="") {
   return new Promise((resolve, reject) => {
     const databaseRef = ref(database, path);
-    get(databaseRef)
+    get(databaseRef, args)
       .then((snapshot) => {
         const data = snapshot.val();
         resolve(data);

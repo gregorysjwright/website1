@@ -26,59 +26,43 @@
 	<script type=module>
 		import { database, getDataFromFirebase } from './firebase.js'
 
-
-
-
-		function getHintValues(database, type) {
-			const path = `hints/${type}`;
-
-			getDataFromFirebase(database, path)
-  			.then((data) => {
-    				console.log(data);
+		function getHint(database, type, index) {
+			getDataFromFirebase(database, 'hints/${type}/${index}');
+			.then((data) => {
+				console.log(data)
 				return data;
-  			})
-  			.catch((error) => {
-    				console.error(error);
-				return {};
-			});
-
-  			const data = getDataFromFirebase(database, path);
-  			const values = [];
-
-  			for (const key in data) {
-    				if (data.hasOwnProperty(key)) {
-      					const value = data[key].value;
-      					values.push(value);
-    				}			
- 		 	}
-
-  			return values;
+			})
+			.catch((error) => {
+                                console.error(error);
+                                return {};
+                        });
 		}
+		
 
+		hintTypes = getDataFromDatabase(database, 'hints', { shallow:true } );
+		console.log(hintTypes);
 		
-		const hints = {}; 
-		hints['typeA'] = getHintValues(database, 'typeA');
-		hints['typeB'] = getHintValues(database, 'typeB');
-		hints['typeC'] = getHintValues(database, 'typeC');
-		
-		console.log("Outputting hints")
-		console.log(hints)
+		const body = document.querySelector("body");
+
+		hintTypes.forEach((value) => {
+			const div = document.createElement("div");
+			div.classList.add("box");
+			div.innerHTML = value;
+			body.appendChild(div);
+		});
+	
+
 		var boxes = document.querySelectorAll('.box');
 
 		boxes.forEach(function(box) {
 			box.addEventListener('click', function handleClick() {
-				var hintsList = hints[box.id];
-				if (hintsList.length > 0) {
-					var hintIndex = Math.floor(Math.random() * hintsList.length);
-					var hint = hintsList[hintIndex];
-					hintsList.splice(hintIndex, 1);
-					alert(hint);
-					if (hintsList.length === 0) {
-						box.innerText = "No more hints of this category, try another";
-						box.removeEventListener('click', handleClick);
-					}
+				
+				hint = getHint(database, box.innerText, '0');
+				if (hint) {
+					hintDisplay.innerText = hint;
+				}			
 				} else {
-					box.innerText = "No more hints of this category, try another";
+					box.innerText = "N/A";
 					box.removeEventListener('click', handleClick);
 				}
 			});
