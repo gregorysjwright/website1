@@ -23,7 +23,7 @@
 	<script type=module>
 		import { database, getDataFromFirebase } from './firebase.js'
 
-		function getHint(database, type, index) {
+		async function getHint(database, type, index) {
 			getDataFromFirebase(database, 'hints/${type}/${index}')
 			.then((data) => {
 				console.log(data)
@@ -36,32 +36,35 @@
 		}
 		
 
-		const hintTypes = getDataFromFirebase(database, 'hints', { shallow:true } );
-		console.log(hintTypes);
+		const hintTypes = getDataFromFirebase(database, 'hints', { shallow:true } )
+		.then()(data => {
+			console.log(hintTypes);
 		
-		const body = document.querySelector("body");
+			const body = document.querySelector("body");
 
-		hintTypes.forEach((value) => {
-			const div = document.createElement("div");
-			div.classList.add("box");
-			div.innerHTML = value;
-			body.appendChild(div);
-		});
+			hintTypes.forEach((value) => {
+				const div = document.createElement("div");
+				div.classList.add("box");
+				div.innerHTML = value;
+				body.appendChild(div);
+			});
 	
 
-		var boxes = document.querySelectorAll('.box');
+			var boxes = document.querySelectorAll('.box');
 
-		boxes.forEach(function(box) {
+			boxes.forEach(function(box) {
 			box.addEventListener('click', function handleClick() {
+
+					hint = getHint(database, box.innerText, '0');
+					if (hint) {
+						hintDisplay.innerText = hint;
+					}			
+					else {
+						box.innerText = "N/A";
+						box.removeEventListener('click', handleClick);
+					}
+				});
 				
-				hint = getHint(database, box.innerText, '0');
-				if (hint) {
-					hintDisplay.innerText = hint;
-				}			
-				else {
-					box.innerText = "N/A";
-					box.removeEventListener('click', handleClick);
-				}
 			});
 		});
 	</script>
