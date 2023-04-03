@@ -35,9 +35,10 @@
                         	})
                                 .catch((error) => {
                                 	console.error(error);
-                                	return {};
                           	});
 			}
+			console.log(index);
+
 			getDataFromFirebase(database, `hints/data/${type}/${index}`)
 			.then((data) => {
 				console.log(data)
@@ -68,15 +69,16 @@
 			boxes.forEach(function(box) {
 			box.addEventListener('click', function handleClick() {
 			
-					const hint = getHint(database, box.innerText, "next");
-					if (hint) {
-						const hintDisplay = document.createElement("div");
-						hintDisplay.innerText = hint;
-					}			
-					else {
-						box.innerText = "N/A";
-						box.removeEventListener('click', handleClick);
-					}
+					getHint(database, box.innerText, "next").then((hint) =>{
+						if (hint) {
+							const hintDisplay = document.createElement("div");
+							hintDisplay.innerText = hint;
+						}			
+						else {
+							box.innerText = "N/A";
+							box.removeEventListener('click', handleClick);
+						}	
+					});
 				});
 				
 			});
