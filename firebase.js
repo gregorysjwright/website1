@@ -73,13 +73,10 @@ function signIntoFirebase(email, password) {
 
 // get data from database
 
-function getDataFromFirebase(database, path, args="") {
+function getDataFromFirebase(database, path) {
   return new Promise((resolve, reject) => {
     let databaseRef = ref(database, path);
     
-    if (args){
-      databaseRef = query(databaseRef, args);
-    }
     get(databaseRef)
       .then((snapshot) => {
         const data = snapshot.val();
@@ -92,4 +89,20 @@ function getDataFromFirebase(database, path, args="") {
 }
 
 
-export { pushToFirebase, signUpWithEmail, signOut,  signIntoFirebase , onAuthStateChanged, getDataFromFirebase } 
+function queryDatabase(database, path, params = {}) {
+  const ref = getDatabase(database);
+  const queryRef = query(ref(path), params);
+
+  return get(queryRef)
+    .then((snapshot) => {
+      return snapshot;
+    })
+    .catch((error) => {
+      throw error;
+    });
+}
+
+
+
+
+export { pushToFirebase, queryDatabase, signUpWithEmail, signOut,  signIntoFirebase , onAuthStateChanged, getDataFromFirebase } 
