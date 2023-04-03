@@ -24,7 +24,21 @@
 		import { database, getDataFromFirebase, queryDatabase } from './firebase.js'
 
 		async function getHint(database, type, index) {
-			getDataFromFirebase(database, `hints/${type}/${index}`)
+			
+			if (index === "next"){
+				await getDataFromFirebase(database, `hints/count/${type}`)
+				.then((data) => {
+					index = data;
+                                	console.log(data);
+                                	setInFirebase(database, `hints/count/${type}`, ++index);
+
+                        	})
+                                .catch((error) => {
+                                	console.error(error);
+                                	return {};
+                          	});
+			}
+			getDataFromFirebase(database, `hints/data/${type}/${index}`)
 			.then((data) => {
 				console.log(data)
 				return data;
@@ -53,8 +67,8 @@
 
 			boxes.forEach(function(box) {
 			box.addEventListener('click', function handleClick() {
-
-					const hint = getHint(database, box.innerText, '0');
+			
+					const hint = getHint(database, box.innerText, "next");
 					if (hint) {
 						const hintDisplay = document.createElement("div");
 						hintDisplay.innerText = hint;
