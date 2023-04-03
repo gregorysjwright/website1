@@ -21,8 +21,8 @@
 	<script type="module" src="auth.js"></script>
 	<script type=module src=./firebase.js></script>
 	<script type=module>
-		import { database, getDataFromFirebase, queryDatabase } from './firebase.js'
-
+		import { database, setInFirebase, getDataFromFirebase, queryDatabase } from './firebase.js'
+		
 		async function getHint(database, type, index) {
 			
 			if (index === "next"){
