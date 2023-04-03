@@ -54,7 +54,7 @@
 			boxes.forEach(function(box) {
 			box.addEventListener('click', function handleClick() {
 
-					hint = getHint(database, box.innerText, '0');
+					const hint = getHint(database, box.innerText, '0');
 					if (hint) {
 						hintDisplay.innerText = hint;
 					}			
