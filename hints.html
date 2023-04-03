@@ -30,18 +30,18 @@
 				.then((data) => {
 					index = data;
                                 	console.log(data);
-                                	setInFirebase(database, `hints/count/${type}`, ++index);
+                                	setInFirebase(database, `hints/count/${type}`, index+1);
 
                         	})
                                 .catch((error) => {
                                 	console.error(error);
                           	});
 			}
-			console.log(index);
+			console.log("Index: "+index);
 
-			getDataFromFirebase(database, `hints/data/${type}/${index}`)
+			return getDataFromFirebase(database, `hints/data/${type}/${index}`)
 			.then((data) => {
-				console.log(data)
+				console.log("data:"+ data)
 				return data;
 			})
 			.catch((error) => {
@@ -65,18 +65,20 @@
 	
 
 			var boxes = document.querySelectorAll('.box');
-
+			const hintDisplay = document.createElement("div");
+			body.appendChild(hintDisplay);
 			boxes.forEach(function(box) {
 			box.addEventListener('click', function handleClick() {
-			
+						
 					getHint(database, box.innerText, "next").then((hint) =>{
+						console.log(hint);
 						if (hint) {
-							const hintDisplay = document.createElement("div");
 							hintDisplay.innerText = hint;
 						}			
 						else {
-							box.innerText = "N/A";
 							box.removeEventListener('click', handleClick);
+							hintDisplay.innerText = `None remaining of this type ${box.innerText}`;
+							box.innerText = "N/A";
 						}	
 					});
 				});
