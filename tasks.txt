@@ -44,3 +44,5 @@
 
 
 # what needs doing for the website
+
+In realtime firebase db, use userid so all data is per account. Then have a "reference" read only access that generates the appropriate fields for them

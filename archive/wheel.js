@@ -14,8 +14,9 @@ const make_wheel = (prizes, winning_prize) => {
   let current_angle = start_angle;
   prizes.forEach((prize, index) => {
     const prize_div = document.createElement("div");
+    prize_div.appendChild(createSector("300px", (360 / prizes.length / 2) + "deg", "0px", "0px", "0px", index % 2 === 0 ? "green" : "yellow", `sector-${prize}`));
     prize_div.style.position = "absolute";
-    prize_div.style.width = "50%";
+    prize_div.style.width = "300px";
     prize_div.style.height = prize_div.style.width;
     prize_div.style.left = "25%";
     prize_div.style.top = "25%";
@@ -65,41 +66,20 @@ const ease_out_cubic = (t) => 1 - Math.pow(1 - t, 3);
 
 
 const [my_wheel, my_button] = make_wheel(["Prize 1", "Prize 2", "Prize 3", "Prize 4", "Prize 5", "Prize 6"], "Prize 2");
-//document.body.appendChild(my_wheel);
-//document.body.appendChild(my_button);
+document.body.appendChild(my_wheel);
+document.body.appendChild(my_button);
 
+function createSector(radius, angle, x_tr, y_tr, z_tr, colour, id) {
+  const sector_wrapper = document.createElement('div');
+  const sector = document.createElement('div');
+  sector.classList.add('sector');
+  sector_wrapper.setAttribute('id', id);
+  sector.style.borderWidth = `${radius} ${radius} 0 0`;
+  sector.style.borderColor = `${colour} transparent transparent transparent`;
+  sector.style.borderRadius = `0 0 0 ${radius}`;
+  sector.style.transform = `translate(${x_tr}, ${y_tr}, ${z_tr}) rotate(${angle})`;
+  sector_wrapper.appendChild(sector);
+  //sector_wrapper.transform = ``;
+  return sector_wrapper;
+}
 
-function createSector(radius, startAngle, endAngle, color, text) {
-        // Create canvas element
-        const canvas = document.createElement('canvas');
-        canvas.classList.add('canvas-text');
-	const ctx = canvas.getContext('2d');
-
-        // Set canvas size to match the specified radius
-	const scale = window.devicePixelRatio*20;
-  	canvas.width = radius * 2 * scale;
-  	canvas.height = radius * 2 * scale;
-  	canvas.style.width = radius * 2 + 'px';
- 	canvas.style.height = radius * 2 + 'px';
-  	ctx.scale(scale, scale);
-        // Draw sector
-        ctx.beginPath();
-        ctx.moveTo(radius, radius);
-        ctx.arc(radius, radius, radius, startAngle, endAngle);
-        ctx.closePath();
-        ctx.fillStyle = color;
-        ctx.fill();
-	ctx.fillStyle = "black";
-        ctx.textAlign = "center";
-	ctx.font = "bold 14px Arial";
-	ctx.fillText(text, 1.5*radius, 1.5*radius);
-        // Create div element to hold the canvas and return it
-        const div = document.createElement('div');
-        div.appendChild(canvas);
-        return div;
-      }
-
-
-//mySector.style.position="absolute";
-//mySector.style.left = "50%";
-//mySector.style.top = "50%";
