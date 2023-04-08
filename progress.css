@@ -3,20 +3,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f371d7;
+    background-color: #FDE7E8;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);   
   }
 
   .week-text {
     font-size: 24px;
     font-weight: bold;
-    color: white;
+    color: #bf1650;
     margin-bottom: 10px;
   }
   .week-links {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     /* flex-wrap: nowrap; */
     justify-content: center;
     align-items: center;
@@ -40,13 +41,14 @@
 
 
 #progress-bar {
-  display: grid;
-  justify-content: space-between;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-gap: 10px;
+  /* display: grid; */
+  /* justify-content: space-between; */
+  /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+  /* grid-gap: 10px; */
   align-items: center;
-  width: 80%;
   margin: 0 auto;
+  border-color: pink;
+  border-style: solid;
 }
 
 #progress-bar a {
