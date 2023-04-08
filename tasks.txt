@@ -46,3 +46,7 @@
 # what needs doing for the website
 
 In realtime firebase db, use userid so all data is per account. Then have a "reference" read only access that generates the appropriate fields for them
+
+for hints.js make it so there are 20 boxes each with a different name/category. Then the box gets greyed out once triggered. Also setup with firebase to keep track
+
+Make it so progress.html is separated by "Week X" per week line. Then say  somewhere the next set of games come out a week or so after completing the prevision

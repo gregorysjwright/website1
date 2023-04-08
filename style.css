@@ -1,16 +1,3 @@
-#progress-bar {
-  font-size: 24px;
-  color: #333;
-}
-#progress-bar span {
-  cursor: pointer;
-}
-#progress-bar .prize {
-  color: gold;
-}
-#progress-bar .win {
-  color: green;
-}
 
 body {
   width: 100%;
@@ -122,62 +109,7 @@ body {
 }
 
 
-#progress-bar {
-  display: grid;
-  justify-content: space-between;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-gap: 10px;
-  align-items: center;
-  width: 80%;
-  margin: 0 auto;
-}
 
-#progress-bar a {
-  text-decoration: none;
-}
-
-#progress-bar .stage {
-  display: inline-block;
-  width: 3em;
-  height: 3em;
-  border-radius: 50%;
-  background-color: #ddd;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5em;
-  line-height: 3em;
-  margin: 0 1em;
-}
-
-#progress-bar .stage.unlocked {
-  background-color: #0095DD;
-}
-<footer>
-  <p class="signature">From your secret admirer</p>
-</footer>
-#progress-bar .stage.completed {
-  background-color: #5cb85c;
-}
-
-#progress-bar a.game .stage:before {
-  content: "\1F3AE";
-}
-
-#progress-bar a.prize .stage:before {
-  content: "\1F381";
-}
-
-#progress-bar a.prize .stage {
-  background-color: gold;
-}
-
-#progress-bar a.win .stage:before {
-  content: "❤️";
-}
-
-#progress-bar a.locked .stage:hover:before {
-  content: "\1F512";
-}
 
 
 .signature {
